@@ -1,0 +1,53 @@
+<div class="row p-4">
+  <shared-go-back-button></shared-go-back-button>
+</div>
+<div class="row p-4">
+  <div class="col">
+    <h4>Salidas</h4>
+  </div>
+</div>
+<div class="row p-4">
+  <div class="col">
+    <table class="table table-bordered">
+      <thead class="table-dark text-center">
+      <tr>
+        <th scope="col">Nro</th>
+        <th scope="col">Factura</th>
+        <th scope="col">Fecha</th>
+        <th scope="col">Código</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Cantidad Stock</th>
+        <th scope="col">Cantidad Salidas</th>
+        <th scope="col">Acción</th>
+      </tr>
+      </thead>
+      <tbody class="text-center">
+      <tr>
+        <th scope="row">1</th>
+        <td>123</td>
+        <td>01/01/2024</td>
+        <td>12345</td>
+        <td>Luis</td>
+        <td>20</td>
+        <td>5</td>
+        <td>
+          <div class="row">
+            <div class="col action d-flex justify-content-around p-0">
+              <button type="button"
+                      class="btn btn-warning btn-action"
+                      routerLink="../edit">
+                <i class="bi bi-pencil-fill"></i>
+              </button>
+              <button type="button"
+                      class="btn btn-secondary btn-action"
+                      routerLink="../subtract">
+                <i class="bi bi-dash-lg"></i>
+              </button>
+            </div>
+          </div>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

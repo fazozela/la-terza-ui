@@ -1,0 +1,17 @@
+.nav {
+  height: 100%;
+}
+a{
+  color: #FFC107;
+}
+.nav-link.active {
+  background-color: #FFC107; /* Change this to your desired active background color */
+  color: black;
+  border-radius: 0; /* Change the text color for better visibility */
+}
+.nav-link.active:hover {
+  color: black; /* Change the text color for better visibility */
+}
+.nav-link:hover {
+  color: #dba505; /* Change the text color for better visibility */
+}

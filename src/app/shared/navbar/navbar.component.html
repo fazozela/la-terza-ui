@@ -1,0 +1,33 @@
+<nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">La Terza</a>
+    <div class="row">
+      <div class="col">
+        <div class="dropdown">
+          <button class="btn btn-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            SUCURSAL
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end">
+            <li><a class="dropdown-item" href="#">Suc. 2</a></li>
+            <li><a class="dropdown-item" href="#">Suc. 1</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="col">
+        <div class="dropdown">
+          <button class="btn btn-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            USUARIO
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end">
+            <li>
+              <a class="dropdown-item"
+                 (click)="onLogout()">
+                Cerrar sesión
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>

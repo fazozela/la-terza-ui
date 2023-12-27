@@ -1,0 +1,33 @@
+.login-container{
+  background-color: #323232;
+  margin: 0;
+  padding: 0;
+}
+.content{
+  height: 100vh;
+}
+.login-container-right {
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 2rem 0 0 2rem;
+}
+.text-title{
+  font-size: 2.8rem;
+  margin-bottom: 5rem;
+}
+form{
+  width: 30rem;
+}
+.btn-warning {
+  background-color: #FFC107;
+  color: #000;
+  border: 1px solid #FFC107;
+}
+.btn-warning:hover {
+  background-color: #f6ba09;
+  color: #000;
+}
+
