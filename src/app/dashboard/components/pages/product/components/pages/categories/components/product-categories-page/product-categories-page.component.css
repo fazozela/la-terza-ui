@@ -1,0 +1,16 @@
+.btn-card{
+  width: 25rem;
+  height: 15rem;
+  background-color: #F9C10B;
+  font-size: 1.5rem;
+  font-weight: 300;
+}
+.alert-warning{
+  margin: 1rem 1.5rem 1rem 1.5rem;
+}
+.edit-icon{
+  display: none;
+}
+.btn-option:hover .edit-icon {
+  display: inline-block;
+}

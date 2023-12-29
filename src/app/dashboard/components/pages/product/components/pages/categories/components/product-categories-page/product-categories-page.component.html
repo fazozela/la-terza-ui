@@ -1,0 +1,29 @@
+<div class="row p-4">
+  <div class="col-10">
+    <h5>Categorías Productos</h5>
+  </div>
+  <div class="col-2 d-flex justify-content-end">
+    <button type="button"
+            class="btn btn-warning"
+            routerLink="../create">
+      <i class="bi bi-plus-lg"></i>
+      Agregar Categoría
+    </button>
+  </div>
+</div>
+
+<div class="alert alert-warning" role="alert">
+  No existen productos
+</div>
+
+<div class="row p-4">
+  <div class="col">
+    <button type="button"
+            class="btn btn-warning btn-card btn-option position-relative"
+            routerLink="123">
+      Hamburguesas
+      <i  [routerLink]="['../123/edit']"
+          class="bi bi-pencil-square edit-icon position-absolute bottom-0 end-0 mx-2"></i>
+    </button>
+  </div>
+</div>

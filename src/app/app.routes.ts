@@ -1,16 +1,6 @@
 import { Routes } from '@angular/router';
 import {isAuthenticatedGuard, isNotAuthenticatedGuard} from "./auth/guards";
-import CreateCategoryComponent
-  from "./dashboard/components/pages/inventory/components/pages/create-category/create-category.component";
-import EditCategoryComponent
-  from "./dashboard/components/pages/inventory/components/pages/edit-category/edit-category.component";
 import AuthLoginPageComponent from "./auth/components/pages/auth-login-page/auth-login-page.component";
-import {
-  CategoriesPageComponent
-} from "./dashboard/components/pages/inventory/components/pages/categories/components/categories-page/categories-page.component";
-import {
-  CategoryPageComponent
-} from "./dashboard/components/pages/inventory/components/pages/categories/pages/category/components/category-page/category-page.component";
 import {
   InitialExistenceListComponent
 } from "./dashboard/components/pages/inventory/components/pages/categories/pages/category/pages/initialExistence/pages/initial-existence-list/initial-existence-list.component";
@@ -38,6 +28,36 @@ import {
 import {
   DecreasesEditComponent
 } from "./dashboard/components/pages/inventory/components/pages/categories/pages/category/pages/decreases/pages/decreases-edit/decreases-edit.component";
+import {
+  InventoryCategoriesPageComponent
+} from "./dashboard/components/pages/inventory/components/pages/categories/components/inventory-categories-page/inventory-categories-page.component";
+import {
+  InventoryCreateCategoryComponent
+} from "./dashboard/components/pages/inventory/components/pages/inventory-create-category/inventory-create-category.component";
+import {
+  ProductCreateCategoryComponent
+} from "./dashboard/components/pages/product/components/pages/product-create-category/product-create-category.component";
+import {
+  InventoryEditCategoryComponent
+} from "./dashboard/components/pages/inventory/components/pages/inventory-edit-category/inventory-edit-category.component";
+import {
+  ProductEditCategoryComponent
+} from "./dashboard/components/pages/product/components/pages/product-edit-category/product-edit-category.component";
+import {
+  ProductCategoriesPageComponent
+} from "./dashboard/components/pages/product/components/pages/categories/components/product-categories-page/product-categories-page.component";
+import {
+  ProductCategoryListComponent
+} from "./dashboard/components/pages/product/components/pages/categories/pages/category/pages/product-category-list/product-category-list.component";
+import {
+  ProductCategoryCreateComponent
+} from "./dashboard/components/pages/product/components/pages/categories/pages/category/pages/product-category-create/product-category-create.component";
+import {
+  ProductCategoryEditComponent
+} from "./dashboard/components/pages/product/components/pages/categories/pages/category/pages/product-category-edit/product-category-edit.component";
+import {
+  InventoryCategoryPageComponent
+} from "./dashboard/components/pages/inventory/components/pages/categories/pages/category/components/inventory-category-page/inventory-category-page.component";
 
 export const routes: Routes = [
   {
@@ -68,13 +88,13 @@ export const routes: Routes = [
             path: 'categories',
             canActivate: [ isAuthenticatedGuard ],
             title: 'Categories Layout',
-            loadComponent: () => import('./dashboard/components/pages/inventory/components/pages/categories/components/categories-layout/categories-layout.component'),
+            loadComponent: () => import('./dashboard/components/pages/inventory/components/pages/categories/components/inventory-categories-layout/inventory-categories-layout.component'),
             children: [
               {
                 path: '',
                 canActivate: [ isAuthenticatedGuard ],
                 title: 'Categories',
-                component: CategoriesPageComponent
+                component: InventoryCategoriesPageComponent
               },
               {
                 path: ':id',
@@ -86,7 +106,7 @@ export const routes: Routes = [
                     path: '',
                     title: 'Category Page',
                     canActivate: [ isAuthenticatedGuard ],
-                    component: CategoryPageComponent
+                    component: InventoryCategoryPageComponent
                   },
                   {
                     path: 'initial-existence',
@@ -179,13 +199,76 @@ export const routes: Routes = [
             path: 'create',
             canActivate: [ isAuthenticatedGuard ],
             title: 'Create Category',
-            component: CreateCategoryComponent
+            component: InventoryCreateCategoryComponent
           },
           {
             path: ':id/edit',
             canActivate: [ isAuthenticatedGuard ],
             title: 'Edit Category',
-            component: EditCategoryComponent
+            component: InventoryEditCategoryComponent
+          },
+          { path: '**', redirectTo: 'categories' }
+        ]
+      },
+      {
+        path: 'product',
+        canActivate: [ isAuthenticatedGuard ],
+        title: 'Product Layout Page',
+        loadComponent: () => import('./dashboard/components/pages/product/components/product-layout/product-layout.component'),
+        children: [
+          {
+            path: 'categories',
+            canActivate: [ isAuthenticatedGuard ],
+            title: 'Categories Layout',
+            loadComponent: () => import('./dashboard/components/pages/product/components/pages/categories/components/product-categories-layout/product-categories-layout.component'),
+            children: [
+              {
+                path: '',
+                canActivate: [ isAuthenticatedGuard ],
+                title: 'Categories',
+                component: ProductCategoriesPageComponent
+              },
+              {
+                path: ':id',
+                canActivate: [ isAuthenticatedGuard ],
+                title: 'Category Layout',
+                loadComponent: () => import('./dashboard/components/pages/product/components/pages/categories/pages/category/components/category-layout/category-layout.component'),
+                children: [
+                  {
+                    path: 'list',
+                    canActivate: [ isAuthenticatedGuard ],
+                    title: 'List',
+                    component: ProductCategoryListComponent
+                  },
+                  {
+                    path: 'create',
+                    canActivate: [ isAuthenticatedGuard ],
+                    title: 'Create',
+                    component: ProductCategoryCreateComponent
+                  },
+                  {
+                    path: ':id/edit',
+                    canActivate: [ isAuthenticatedGuard ],
+                    title: 'Edit',
+                    component: ProductCategoryEditComponent
+                  },
+                  { path: '**', redirectTo: 'list' }
+                ]
+              },
+              { path: '**', redirectTo: '' }
+            ]
+          },
+          {
+            path: 'create',
+            canActivate: [ isAuthenticatedGuard ],
+            title: 'Create Category',
+            component: ProductCreateCategoryComponent
+          },
+          {
+            path: ':id/edit',
+            canActivate: [ isAuthenticatedGuard ],
+            title: 'Edit Category',
+            component: ProductEditCategoryComponent
           },
           { path: '**', redirectTo: 'categories' }
         ]
