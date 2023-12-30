@@ -59,17 +59,23 @@ import {
   ProductEditCategoryComponent
 } from "./dashboard/components/pages/product/pages/product-edit-category/product-edit-category.component";
 import {SaleListComponent} from "./dashboard/components/pages/sale/pages/sale-list/sale-list.component";
-import {SaleEditComponent} from "./dashboard/components/pages/sale/pages/sale-edit/sale-edit.component";
 import {SaleViewComponent} from "./dashboard/components/pages/sale/pages/sale-view/sale-view.component";
 import {
   SaleCreateComponent
 } from "./dashboard/components/pages/sale/pages/sale-create/pages/sale-create/sale-create.component";
 import {
-  SaleAddProductComponent
-} from "./dashboard/components/pages/sale/pages/sale-create/pages/sale-add-product/sale-add-product.component";
+  SaleEditEditProductComponent
+} from "./dashboard/components/pages/sale/pages/sale-edit/pages/sale-edit-edit-product/sale-edit-edit-product.component";
 import {
-  SaleEditProductComponent
-} from "./dashboard/components/pages/sale/pages/sale-create/pages/sale-edit-product/sale-edit-product.component";
+  SaleEditAddProductComponent
+} from "./dashboard/components/pages/sale/pages/sale-edit/pages/sale-edit-add-product/sale-edit-add-product.component";
+import {SaleEditComponent} from "./dashboard/components/pages/sale/pages/sale-edit/pages/sale-edit/sale-edit.component";
+import {
+  SaleCreateAddProductComponent
+} from "./dashboard/components/pages/sale/pages/sale-create/pages/sale-create-add-product/sale-create-add-product.component";
+import {
+  SaleCreateEditProductComponent
+} from "./dashboard/components/pages/sale/pages/sale-create/pages/sale-create-edit-product/sale-create-edit-product.component";
 
 export const routes: Routes = [
   {
@@ -313,13 +319,13 @@ export const routes: Routes = [
                 path: ':id/add',
                 canActivate: [ isAuthenticatedGuard ],
                 title: 'Add',
-                component: SaleAddProductComponent
+                component: SaleCreateAddProductComponent
               },
               {
                 path: ':id/edit',
                 canActivate: [ isAuthenticatedGuard ],
                 title: 'Edit',
-                component: SaleEditProductComponent
+                component: SaleCreateEditProductComponent
               },
               { path: '**', redirectTo: '' }
             ]
@@ -328,7 +334,28 @@ export const routes: Routes = [
             path: ':id/edit',
             canActivate: [ isAuthenticatedGuard ],
             title: 'Edit',
-            component: SaleEditComponent
+            loadComponent: () => import('./dashboard/components/pages/sale/pages/sale-edit/components/sale-edit-layout/sale-edit-layout.component'),
+            children: [
+              {
+                path: '',
+                canActivate: [ isAuthenticatedGuard ],
+                title: 'Edit',
+                component: SaleEditComponent
+              },
+              {
+                path: ':id/add',
+                canActivate: [ isAuthenticatedGuard ],
+                title: 'Add',
+                component: SaleEditAddProductComponent
+              },
+              {
+                path: ':id/edit',
+                canActivate: [ isAuthenticatedGuard ],
+                title: 'Edit',
+                component: SaleEditEditProductComponent
+              },
+              { path: '**', redirectTo: '' }
+            ]
           },
           {
             path: ':id/view',

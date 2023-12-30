@@ -1,21 +1,21 @@
 import { Component } from '@angular/core';
 import {GoBackButtonComponent} from "../../../../../../../../shared/go-back-button/go-back-button.component";
+import {RouterLink} from "@angular/router";
 import {
   ShortCancelFormButtonComponent
 } from "../../../../../../../../shared/short-cancel-form-button/short-cancel-form-button.component";
-import {RouterModule} from "@angular/router";
 
 @Component({
-  selector: 'app-sale-edit-product',
+  selector: 'app-sale-edit-edit-product',
   standalone: true,
   imports: [
     GoBackButtonComponent,
-    ShortCancelFormButtonComponent,
-    RouterModule
+    RouterLink,
+    ShortCancelFormButtonComponent
   ],
-  templateUrl: './sale-edit-product.component.html',
-  styleUrl: './sale-edit-product.component.css'
+  templateUrl: './sale-edit-edit-product.component.html',
+  styleUrl: './sale-edit-edit-product.component.css'
 })
-export class SaleEditProductComponent {
+export class SaleEditEditProductComponent {
 
 }
