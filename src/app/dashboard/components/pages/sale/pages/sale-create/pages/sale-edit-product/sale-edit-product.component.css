@@ -1,0 +1,29 @@
+.box-form-row{
+  padding-inline-start: 30rem;
+  padding-inline-end: 30rem;
+}
+.box-form-product{
+  background-color: rgba(255, 193, 7, 0.1);
+  border-radius: 1rem;
+  padding-block: 3rem;
+  padding-inline: 4rem;
+}
+img{
+  width: 100%;
+  border-radius: 1rem;
+}
+.form-control {
+  width: 100%;
+}
+.form-control:focus {
+  width: 22rem;
+}
+.form-buttons button{
+  width: 10rem;
+}
+.accordion{
+  width: 100%;
+  --bs-accordion-btn-bg: #ffdc77;
+  --bs-accordion-active-bg: #FFC107;
+}
+

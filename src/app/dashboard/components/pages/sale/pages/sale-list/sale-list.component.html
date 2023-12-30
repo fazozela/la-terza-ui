@@ -1,0 +1,82 @@
+<div class="row p-4">
+  <shared-go-back-button></shared-go-back-button>
+</div>
+<div class="row p-4">
+  <div class="col-10">
+    <h4>Resumen de ventas</h4>
+  </div>
+  <div class="col-2 d-flex justify-content-end">
+    <button type="button"
+            class="btn btn-warning"
+            routerLink="../create">
+      <i class="bi bi-plus-lg"></i>
+      Agregar
+    </button>
+  </div>
+</div>
+<div class="row p-4">
+  <div class="col">
+    <table class="table table-bordered">
+      <thead class="table-dark text-center">
+      <tr>
+        <th scope="col">Nro</th>
+        <th scope="col">Pedido</th>
+        <th scope="col">Tipo de venta</th>
+        <th scope="col">Acción</th>
+      </tr>
+      </thead>
+      <tbody class="text-center">
+      <tr>
+        <th scope="row">1</th>
+        <td>2 hamburguesas simples, 2 personales</td>
+        <td>Delivery</td>
+        <td>
+          <div class="row">
+            <div class="col action d-flex justify-content-around p-0">
+              <button type="button"
+                      class="btn btn-primary btn-action"
+                      routerLink="../:id/view">
+                <i class="bi bi-eye-fill"></i>
+              </button>
+
+              <button type="button"
+                      class="btn btn-warning btn-action"
+                      routerLink="../123/edit">
+                <i class="bi bi-pencil-fill"></i>
+              </button>
+
+              <button type="button"
+                      class="btn btn-danger btn-action"
+                      data-bs-toggle="modal"
+                      data-bs-target="#deleteModal">
+                <i class="bi bi-trash-fill"></i>
+              </button>
+              <!-- Modal -->
+              <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h1 class="modal-title fs-5" id="deleteModalLabel">
+                        Eliminar
+                      </h1>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      Está seguro de eliminar esta venta?
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+                      <button type="button" class="btn btn-warning">Aceptar</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Close Modal -->
+            </div>
+          </div>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

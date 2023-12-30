@@ -58,6 +58,18 @@ import {
 import {
   ProductEditCategoryComponent
 } from "./dashboard/components/pages/product/pages/product-edit-category/product-edit-category.component";
+import {SaleListComponent} from "./dashboard/components/pages/sale/pages/sale-list/sale-list.component";
+import {SaleEditComponent} from "./dashboard/components/pages/sale/pages/sale-edit/sale-edit.component";
+import {SaleViewComponent} from "./dashboard/components/pages/sale/pages/sale-view/sale-view.component";
+import {
+  SaleCreateComponent
+} from "./dashboard/components/pages/sale/pages/sale-create/pages/sale-create/sale-create.component";
+import {
+  SaleAddProductComponent
+} from "./dashboard/components/pages/sale/pages/sale-create/pages/sale-add-product/sale-add-product.component";
+import {
+  SaleEditProductComponent
+} from "./dashboard/components/pages/sale/pages/sale-create/pages/sale-edit-product/sale-edit-product.component";
 
 export const routes: Routes = [
   {
@@ -271,6 +283,60 @@ export const routes: Routes = [
             component: ProductEditCategoryComponent
           },
           { path: '**', redirectTo: 'categories' }
+        ]
+      },
+      {
+        path: 'sale',
+        canActivate: [ isAuthenticatedGuard ],
+        title: 'Sale Layout Page',
+        loadComponent: () => import('./dashboard/components/pages/sale/components/sale-layout/sale-layout.component'),
+        children: [
+          {
+            path: 'list',
+            canActivate: [ isAuthenticatedGuard ],
+            title: 'List',
+            component: SaleListComponent
+          },
+          {
+            path: 'create',
+            canActivate: [ isAuthenticatedGuard ],
+            title: 'Create Layout',
+            loadComponent: () => import('./dashboard/components/pages/sale/pages/sale-create/components/sale-create-layout/sale-create-layout.component'),
+            children: [
+              {
+                path: '',
+                canActivate: [ isAuthenticatedGuard ],
+                title: 'Create',
+                component: SaleCreateComponent
+              },
+              {
+                path: ':id/add',
+                canActivate: [ isAuthenticatedGuard ],
+                title: 'Add',
+                component: SaleAddProductComponent
+              },
+              {
+                path: ':id/edit',
+                canActivate: [ isAuthenticatedGuard ],
+                title: 'Edit',
+                component: SaleEditProductComponent
+              },
+              { path: '**', redirectTo: '' }
+            ]
+          },
+          {
+            path: ':id/edit',
+            canActivate: [ isAuthenticatedGuard ],
+            title: 'Edit',
+            component: SaleEditComponent
+          },
+          {
+            path: ':id/view',
+            canActivate: [ isAuthenticatedGuard ],
+            title: 'View',
+            component: SaleViewComponent
+          },
+          { path: '**', redirectTo: 'list' }
         ]
       },
       { path: '**', redirectTo: 'inventory' }

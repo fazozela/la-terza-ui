@@ -1,0 +1,8 @@
+.card-img{
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+.form-buttons button{
+  width: 15rem;
+}
