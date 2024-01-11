@@ -1,0 +1,30 @@
+<div class="row p-4">
+  <shared-go-back-button></shared-go-back-button>
+</div>
+
+<div class="row">
+  <div class="col box-form">
+    <h3 class="text-center">
+      Seleccionar mes
+    </h3>
+
+    <form action="" class="mt-5">
+      <div>
+        <label for="dateFormControl" class="form-label">Mes:</label>
+        <input type="month" class="form-control" id="dateFormControl" placeholder="Fecha">
+      </div>
+      <div class="row mt-5 form-buttons">
+        <div class="col">
+          <shared-cancel-form-button></shared-cancel-form-button>
+        </div>
+        <div class="col">
+          <button type="button"
+                  class="btn btn-warning btn-lg"
+                  routerLink="search-result">
+            Aceptar
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

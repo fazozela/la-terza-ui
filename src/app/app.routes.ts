@@ -76,6 +76,31 @@ import {
 import {
   SaleCreateEditProductComponent
 } from "./dashboard/components/pages/sale/pages/sale-create/pages/sale-create-edit-product/sale-create-edit-product.component";
+import {ReportsPageComponent} from "./dashboard/components/pages/reports/components/reports-page/reports-page.component";
+import {
+  InventoryStatusReportMonthSearchComponent
+} from "./dashboard/components/pages/reports/pages/inventory-status/pages/inventory-status-report-month-search/inventory-status-report-month-search.component";
+import {
+  InventoryStatusComponent
+} from "./dashboard/components/pages/reports/pages/inventory-status/pages/inventory-status/inventory-status.component";
+import {
+  MostSelledProductsComponent
+} from "./dashboard/components/pages/reports/pages/most-selled-products/pages/most-selled-products/most-selled-products.component";
+import {
+  MostSelledProductsReportMonthSearchComponent
+} from "./dashboard/components/pages/reports/pages/most-selled-products/pages/most-selled-products-report-month-search/most-selled-products-report-month-search.component";
+import {
+  HamburguerReportMonthSearchComponent
+} from "./dashboard/components/pages/reports/pages/hamburguer-report/pages/hamburguer-report-month-search/hamburguer-report-month-search.component";
+import {
+  HamburguerReportComponent
+} from "./dashboard/components/pages/reports/pages/hamburguer-report/pages/hamburguer-report/hamburguer-report.component";
+import {
+  IncomeByDateReportDaySearchComponent
+} from "./dashboard/components/pages/reports/pages/income-by-date/pages/income-by-date-report-day-search/income-by-date-report-day-search.component";
+import {
+  IncomeByDateComponent
+} from "./dashboard/components/pages/reports/pages/income-by-date/pages/income-by-date/income-by-date.component";
 
 export const routes: Routes = [
   {
@@ -364,6 +389,105 @@ export const routes: Routes = [
             component: SaleViewComponent
           },
           { path: '**', redirectTo: 'list' }
+        ]
+      },
+      {
+        path: 'reports',
+        canActivate: [ isAuthenticatedGuard ],
+        title: 'Reports Layout Page',
+        loadComponent: () => import('./dashboard/components/pages/reports/components/reports-layout/reports-layout.component'),
+        children: [
+          {
+            path: '',
+            canActivate: [ isAuthenticatedGuard ],
+            title: 'Reports Page',
+            component: ReportsPageComponent
+          },
+          {
+            path: 'inventory-status',
+            canActivate: [ isAuthenticatedGuard ],
+            title: 'Inventory Status Page Layout',
+            loadComponent: () => import('./dashboard/components/pages/reports/pages/inventory-status/components/inventory-status-layout/inventory-status-layout.component'),
+            children: [
+              {
+                path: '',
+                canActivate: [ isAuthenticatedGuard ],
+                title: 'Month Search Page',
+                component: InventoryStatusReportMonthSearchComponent
+              },
+              {
+                path: 'search-result',
+                canActivate: [ isAuthenticatedGuard ],
+                title: 'Inventory Status Search Result Page',
+                component: InventoryStatusComponent
+              },
+              { path: '**', redirectTo: '' }
+            ]
+          },
+          {
+            path: 'most-selled-products',
+            canActivate: [ isAuthenticatedGuard ],
+            title: 'Most Selled Products Page Layout',
+            loadComponent: () => import('./dashboard/components/pages/reports/pages/most-selled-products/components/most-selled-products-layout/most-selled-products-layout.component'),
+            children: [
+              {
+                path: '',
+                canActivate: [ isAuthenticatedGuard ],
+                title: 'Month Search Page',
+                component: MostSelledProductsReportMonthSearchComponent
+              },
+              {
+                path: 'search-result',
+                canActivate: [ isAuthenticatedGuard ],
+                title: 'Most Selled Products Search Result Page',
+                component: MostSelledProductsComponent
+              },
+              { path: '**', redirectTo: '' }
+            ]
+          },
+          {
+            path: 'hamburguer-report',
+            canActivate: [ isAuthenticatedGuard ],
+            title: 'Hamburguer Page Layout',
+            loadComponent: () => import('./dashboard/components/pages/reports/pages/hamburguer-report/components/hamburguer-report-layout/hamburguer-report-layout.component'),
+            children: [
+              {
+                path: '',
+                canActivate: [ isAuthenticatedGuard ],
+                title: 'Month Search Page',
+                component: HamburguerReportMonthSearchComponent
+              },
+              {
+                path: 'search-result',
+                canActivate: [ isAuthenticatedGuard ],
+                title: 'Hamburguer Report Search Result Page',
+                component: HamburguerReportComponent
+              },
+              { path: '**', redirectTo: '' }
+            ]
+          },
+          {
+            path: 'income-by-date',
+            canActivate: [ isAuthenticatedGuard ],
+            title: 'Income By Date Page Layout',
+            loadComponent: () => import('./dashboard/components/pages/reports/pages/income-by-date/components/income-by-date-layout/income-by-date-layout.component'),
+            children: [
+              {
+                path: '',
+                canActivate: [ isAuthenticatedGuard ],
+                title: 'Day Search Page',
+                component: IncomeByDateReportDaySearchComponent
+              },
+              {
+                path: 'search-result',
+                canActivate: [ isAuthenticatedGuard ],
+                title: 'Hamburguer Report Search Result Page',
+                component: IncomeByDateComponent
+              },
+              { path: '**', redirectTo: '' }
+            ]
+          },
+          { path: '**', redirectTo: '' }
         ]
       },
       { path: '**', redirectTo: 'inventory' }
