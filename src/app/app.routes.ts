@@ -101,6 +101,19 @@ import {
 import {
   IncomeByDateComponent
 } from "./dashboard/components/pages/reports/pages/income-by-date/pages/income-by-date/income-by-date.component";
+import {AdminComponent} from "./dashboard/components/pages/admin/components/admin/admin.component";
+import {UsersComponent} from "./dashboard/components/pages/admin/pages/users/pages/users/users.component";
+import {CreateUsersComponent} from "./dashboard/components/pages/admin/pages/users/pages/create-users/create-users.component";
+import {EditUsersComponent} from "./dashboard/components/pages/admin/pages/users/pages/edit-users/edit-users.component";
+import {
+  SubsidiariesComponent
+} from "./dashboard/components/pages/admin/pages/subsidiaries/pages/subsidiaries/subsidiaries.component";
+import {
+  CreateSubsidiariesComponent
+} from "./dashboard/components/pages/admin/pages/subsidiaries/pages/create-subsidiaries/create-subsidiaries.component";
+import {
+  EditSubsidiariesComponent
+} from "./dashboard/components/pages/admin/pages/subsidiaries/pages/edit-subsidiaries/edit-subsidiaries.component";
 
 export const routes: Routes = [
   {
@@ -488,6 +501,74 @@ export const routes: Routes = [
             ]
           },
           { path: '**', redirectTo: '' }
+        ]
+      },
+      {
+        path: 'admin',
+        canActivate: [ isAuthenticatedGuard ],
+        title: 'Administrator Layout Page',
+        loadComponent: () => import('./dashboard/components/pages/admin/components/admin-layout/admin-layout.component'),
+        children: [
+          {
+            path: '',
+            canActivate: [ isAuthenticatedGuard ],
+            title: 'Administrator Page',
+            component: AdminComponent
+          },
+          {
+            path: 'users',
+            canActivate: [ isAuthenticatedGuard ],
+            title: 'Users Page Layout',
+            loadComponent: () => import('./dashboard/components/pages/admin/pages/users/components/users-layout/users-layout.component'),
+            children: [
+              {
+                path: '',
+                canActivate: [ isAuthenticatedGuard ],
+                title: 'Users Page',
+                component: UsersComponent
+              },
+              {
+                path: 'create',
+                canActivate: [ isAuthenticatedGuard ],
+                title: 'Create Users Page',
+                component: CreateUsersComponent
+              },
+              {
+                path: ':id/edit',
+                canActivate: [ isAuthenticatedGuard ],
+                title: 'Edit Users Page',
+                component: EditUsersComponent
+              },
+              { path: '**', redirectTo: '' }
+            ]
+          },
+          {
+            path: 'subsidiaries',
+            canActivate: [ isAuthenticatedGuard ],
+            title: 'Subsidiaries Page Layout',
+            loadComponent: () => import('./dashboard/components/pages/admin/pages/subsidiaries/components/subsidiaries-layout/subsidiaries-layout.component'),
+            children: [
+              {
+                path: '',
+                canActivate: [ isAuthenticatedGuard ],
+                title: 'Subsidiaries Page',
+                component: SubsidiariesComponent
+              },
+              {
+                path: 'create',
+                canActivate: [ isAuthenticatedGuard ],
+                title: 'Create Subsidiaries Page',
+                component: CreateSubsidiariesComponent
+              },
+              {
+                path: ':id/edit',
+                canActivate: [ isAuthenticatedGuard ],
+                title: 'Edit Subsidiaries Page',
+                component: EditSubsidiariesComponent
+              },
+              { path: '**', redirectTo: '' }
+            ]
+          }
         ]
       },
       { path: '**', redirectTo: 'inventory' }
