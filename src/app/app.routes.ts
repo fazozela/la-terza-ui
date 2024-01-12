@@ -114,6 +114,27 @@ import {
 import {
   EditSubsidiariesComponent
 } from "./dashboard/components/pages/admin/pages/subsidiaries/pages/edit-subsidiaries/edit-subsidiaries.component";
+import {
+  PaydeskPageComponent
+} from "./dashboard/components/pages/paydesk/components/paydesk-page/paydesk-page.component";
+import {
+  DailyPaydeskComponent
+} from "./dashboard/components/pages/paydesk/pages/daily-paydesk/pages/daily-paydesk/daily-paydesk.component";
+import {
+  PaydeskStartComponent
+} from "./dashboard/components/pages/paydesk/pages/daily-paydesk/pages/paydesk-start/paydesk-start.component";
+import {
+  PaydeskClosingComponent
+} from "./dashboard/components/pages/paydesk/pages/daily-paydesk/pages/paydesk-closing/paydesk-closing.component";
+import {
+  PaydeskSummaryComponent
+} from "./dashboard/components/pages/paydesk/pages/daily-paydesk/pages/paydesk-summary/paydesk-summary.component";
+import {
+  PaydeskReportDaySearchComponent
+} from "./dashboard/components/pages/paydesk/pages/paydesk-report/pages/paydesk-report-day-search/paydesk-report-day-search.component";
+import {
+  PaydeskReportComponent
+} from "./dashboard/components/pages/paydesk/pages/paydesk-report/pages/paydesk-report/paydesk-report.component";
 
 export const routes: Routes = [
   {
@@ -569,6 +590,74 @@ export const routes: Routes = [
               { path: '**', redirectTo: '' }
             ]
           }
+        ]
+      },
+      {
+        path: 'paydesk',
+        canActivate: [ isAuthenticatedGuard ],
+        title: 'Paydesk Layout Page',
+        loadComponent: () => import('./dashboard/components/pages/paydesk/components/paydesk-layout/paydesk-layout.component'),
+        children: [
+          {
+            path: '',
+            canActivate: [ isAuthenticatedGuard ],
+            title: 'Paydesk Page',
+            component: PaydeskPageComponent
+          },
+          {
+            path: 'daily-paydesk',
+            canActivate: [ isAuthenticatedGuard ],
+            title: 'Daily Paydesk Page Layout',
+            loadComponent: () => import('./dashboard/components/pages/paydesk/pages/daily-paydesk/components/daily-paydesk-layout/daily-paydesk-layout.component'),
+            children: [
+              {
+                path: '',
+                canActivate: [ isAuthenticatedGuard ],
+                title: 'Daily Paydesk Page',
+                component: DailyPaydeskComponent
+              },
+              {
+                path: 'paydesk-start',
+                canActivate: [ isAuthenticatedGuard ],
+                title: 'Paydesk Start Page',
+                component: PaydeskStartComponent
+              },
+              {
+                path: 'paydesk-closing',
+                canActivate: [ isAuthenticatedGuard ],
+                title: 'Paydesk Closing Page',
+                component: PaydeskClosingComponent
+              },
+              {
+                path: 'paydesk-summary',
+                canActivate: [ isAuthenticatedGuard ],
+                title: 'Paydesk Summary Page',
+                component: PaydeskSummaryComponent
+              },
+              { path: '**', redirectTo: '' }
+            ]
+          },
+          {
+            path: 'paydesk-report',
+            canActivate: [ isAuthenticatedGuard ],
+            title: 'Paydesk Report Page Layout',
+            loadComponent: () => import('./dashboard/components/pages/paydesk/pages/paydesk-report/components/paydesk-report-layout/paydesk-report-layout.component'),
+            children: [
+              {
+                path: '',
+                canActivate: [ isAuthenticatedGuard ],
+                title: 'Paydesk Report Page Search',
+                component: PaydeskReportDaySearchComponent
+              },
+              {
+                path: 'search-result',
+                canActivate: [ isAuthenticatedGuard ],
+                title: 'Paydesk Report Page Search Result',
+                component: PaydeskReportComponent
+              },
+            ]
+          },
+          { path: '**', redirectTo: '' }
         ]
       },
       { path: '**', redirectTo: 'inventory' }
